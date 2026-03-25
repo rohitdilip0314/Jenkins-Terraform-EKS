@@ -1,7 +1,7 @@
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
-  cluster_name = "my-eks-cluster"
+  cluster_name = local.name
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
@@ -12,7 +12,7 @@ module "eks" {
       max_size     = 2
       min_size     = 1
 
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.micro"]
     }
   }
 }
